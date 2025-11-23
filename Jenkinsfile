@@ -52,7 +52,14 @@ pipeline {
             steps {
                 // 这里的 python 命令是在容器里运行的，所以一定有
                 sh 'python3 --version'
-                sh 'pip3 install requests' // 甚至不需要 venv，因为容器是临时的
+            }
+        }
+
+        stage('Setup & Install'){
+            steps{
+                echo " 创建虚拟环境"
+                sh 'python3 -m venv venv'
+                sh './venv/bin/pip install requests'
             }
         }
     }
