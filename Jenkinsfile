@@ -52,7 +52,7 @@ pipeline {
             steps {
                 // 这里的 python 命令是在容器里运行的，所以一定有
                 sh 'python3 --version'
-                sh 'pip install requests' // 甚至不需要 venv，因为容器是临时的
+                sh 'pip3 install requests' // 甚至不需要 venv，因为容器是临时的
             }
         }
     }
