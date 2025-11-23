@@ -45,11 +45,7 @@
 
 pipeline {
     // 关键修改：指定使用 python 3.9 的镜像
-    agent {
-        docker { 
-            image 'python:3.9-slim' 
-        }
-    }
+    agent any
     
     stages {
         stage('Check Python') {
