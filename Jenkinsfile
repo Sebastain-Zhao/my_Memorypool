@@ -60,7 +60,17 @@ pipeline {
                 sh "${VENV_BIN}/pip install -r requirements.txt"
             }
         }
-
+        stage('Unit Test') {
+            steps {
+                echo "开始运行单元测试..."
+                // 运行 pytest
+                // 解释: 
+                // -v: 详细模式 (verbose)
+                // --junitxml=reports/result.xml: 生成 Jenkins 能看懂的测试报告文件
+                sh "${VENV_BIN}/pytest -v --junitxml=reports/result.xml tests/"
+            }
+        }
+        
         // 阶段二：代码检查
         stage('Lint') {
             steps {
